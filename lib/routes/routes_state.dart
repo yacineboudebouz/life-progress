@@ -5,8 +5,7 @@ enum RouteStates {
     allowedPaths: [
       'welcome',
       '/birth-day',
-      '/second-step',
-      '/third-step',
+      '/life-expectancy',
     ],
   ),
   // application routes

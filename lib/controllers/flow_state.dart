@@ -20,7 +20,7 @@ class FlowState {
   factory FlowState.initial() {
     return FlowState(
       birthDay: DateTime.now(),
-      expectedAge: 0,
+      expectedAge: 18,
     );
   }
 }

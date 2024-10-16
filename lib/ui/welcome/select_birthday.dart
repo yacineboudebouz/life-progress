@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:life_progress/controllers/flow_controller.dart';
+import 'package:life_progress/routes/go_router.dart';
 import 'package:life_progress/ui/theming/app_colors.dart';
 import 'package:life_progress/ui/widgets/app_button.dart';
 import 'package:life_progress/ui/widgets/app_scaffold.dart';
@@ -23,9 +25,14 @@ class _SelectBirthDayState extends ConsumerState<SelectBirthDay> {
     ).then((value) {
       if (value != null) {
         ref.read(flowControllerProvider.notifier).setBirthday(value);
+        setState(() {
+          _canContinue = true;
+        });
       }
     });
   }
+
+  bool _canContinue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +67,10 @@ class _SelectBirthDayState extends ConsumerState<SelectBirthDay> {
           ),
           AppButton(
             text: "Next",
-            onPressed: () {},
+            canClick: _canContinue,
+            onPressed: () {
+              GoRouter.of(context).goNamed(AppRoutes.lifeExpectancy.name);
+            },
           )
         ],
       ),
