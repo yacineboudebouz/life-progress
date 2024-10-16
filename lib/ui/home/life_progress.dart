@@ -66,12 +66,12 @@ class _LifeProgressState extends ConsumerState<LifeProgress> {
                 child: GridView.builder(
               physics: const BouncingScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 52),
+                  crossAxisCount: 26),
               itemBuilder: (_, index) {
                 final color =
                     _getColor(index, state.weeksInLife, state.weeksLived);
                 return Padding(
-                  padding: const EdgeInsets.all(0.5),
+                  padding: const EdgeInsets.all(1.0),
                   child: WeekYear(
                     color: color,
                   ),

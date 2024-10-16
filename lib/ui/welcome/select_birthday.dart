@@ -51,20 +51,19 @@ class _SelectBirthDayState extends ConsumerState<SelectBirthDay> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 20),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ListTile(
-                onTap: _SelectDate,
-                leading: const Icon(Icons.calendar_today_outlined),
-                title: const Text(
-                  "Your Birthday",
-                  style: TextStyle(fontWeight: FontWeight.w600),
-                ),
-                subtitle: Text(state.birthDay.format()),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: ListTile(
+              onTap: _SelectDate,
+              leading: const Icon(Icons.calendar_today_outlined),
+              title: const Text(
+                "Your Birthday",
+                style: TextStyle(fontWeight: FontWeight.w600),
               ),
+              subtitle: Text(state.birthDay.format()),
             ),
           ),
+          const Spacer(),
           AppButton(
             text: "Next",
             canClick: _canContinue,
