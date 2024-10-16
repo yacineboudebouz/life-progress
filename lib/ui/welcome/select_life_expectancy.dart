@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:life_progress/controllers/flow_controller.dart';
+import 'package:life_progress/routes/go_router.dart';
 import 'package:life_progress/ui/theming/app_colors.dart';
 import 'package:life_progress/ui/widgets/app_button.dart';
 import 'package:life_progress/ui/widgets/app_scaffold.dart';
@@ -60,7 +62,9 @@ class _SelectLifeExpectancyState extends ConsumerState<SelectLifeExpectancy> {
           AppButton(
             text: "Finish",
             canClick: _canContinue,
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).goNamed(AppRoutes.home.name);
+            },
           )
         ],
       ),

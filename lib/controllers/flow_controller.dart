@@ -17,5 +17,23 @@ class FlowController extends StateNotifier<FlowState> {
     state = state.copyWith(expectedAge: expectedAge);
   }
 
-  get weeksInLife => state.expectedAge * 52;
+  int get weeksInLife => state.expectedAge * 52;
+  int get weeksLived =>
+      (DateTime.now().difference(state.birthDay).inDays / 7).round();
+  int get remainingWeeks => weeksInLife - weeksLived;
+
+  // get two numbers after the decimal point
+  double get percentageLivedWeeks =>
+      double.parse((weeksLived / weeksInLife * 100).toStringAsFixed(2));
+
+  // get weeks lived from last birthday
+  int get weeksLivedFromLastBirthday =>
+      (DateTime.now().difference(state.birthDay).inDays % 365 / 7).round();
+
+  // weeks remaining until next birthday
+  int get weeksTilBirthday => 52 - weeksLivedFromLastBirthday;
+
+  // get two numbers after the decimal point of weeks lived from last birthday
+  double get percentageLivedWeeksFromLastBirthday =>
+      double.parse((weeksLivedFromLastBirthday / 52 * 100).toStringAsFixed(2));
 }

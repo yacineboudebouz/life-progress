@@ -42,6 +42,7 @@ dependencies:
   build_runner: ^2.4.11
   shared_preferences: ^2.3.2
   google_fonts: ^6.2.1
+  page_flip_builder: ^0.1.4
 
 dev_dependencies:
   flutter_test:

@@ -23,4 +23,12 @@ class FlowState {
       expectedAge: 18,
     );
   }
+
+  int weeksLived() {
+    return (DateTime.now().difference(birthDay).inDays / 7).round();
+  }
+
+  double percentageLivedWeeks() {
+    return (weeksLived() / (expectedAge * 52) * 100);
+  }
 }
