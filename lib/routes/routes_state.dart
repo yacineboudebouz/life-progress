@@ -3,8 +3,8 @@ enum RouteStates {
   setup(
     redirectPath: '/first-step',
     allowedPaths: [
-      'welcome'
-          '/first-step',
+      'welcome',
+      '/birth-day',
       '/second-step',
       '/third-step',
     ],

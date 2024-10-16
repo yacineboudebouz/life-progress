@@ -1,14 +1,19 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:life_progress/controllers/flow_state.dart';
 
+final flowControllerProvider =
+    StateNotifierProvider<FlowController, FlowState>((ref) {
+  return FlowController();
+});
+
 class FlowController extends StateNotifier<FlowState> {
   FlowController() : super(FlowState.initial());
 
-  set birthday(DateTime birthday) {
+  void setBirthday(DateTime birthday) {
     state = state.copyWith(birthDay: birthday);
   }
 
-  set expectedAge(int expectedAge) {
+  void setAge(int expectedAge) {
     state = state.copyWith(expectedAge: expectedAge);
   }
 

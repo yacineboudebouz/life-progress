@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:life_progress/controllers/flow_controller.dart';
+import 'package:life_progress/ui/theming/app_colors.dart';
+import 'package:life_progress/ui/widgets/app_button.dart';
+import 'package:life_progress/ui/widgets/app_scaffold.dart';
+import 'package:life_progress/utils/extensions.dart';
 
 class SelectBirthDay extends ConsumerStatefulWidget {
   const SelectBirthDay({super.key});
@@ -9,8 +14,56 @@ class SelectBirthDay extends ConsumerStatefulWidget {
 }
 
 class _SelectBirthDayState extends ConsumerState<SelectBirthDay> {
+  void _SelectDate() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    ).then((value) {
+      if (value != null) {
+        ref.read(flowControllerProvider.notifier).setBirthday(value);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final state = ref.watch(flowControllerProvider);
+    return AppScaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Text(
+            "Select your birthday",
+            style: TextStyle(fontSize: 32, color: AppColors.primary),
+            textAlign: TextAlign.center,
+          ),
+          const Text(
+            "Hi there! We need to know your birthday to calculate your age and show you the best content for you.",
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 20),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListTile(
+                onTap: _SelectDate,
+                leading: const Icon(Icons.calendar_today_outlined),
+                title: const Text(
+                  "Your Birthday",
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
+                subtitle: Text(state.birthDay.format()),
+              ),
+            ),
+          ),
+          AppButton(
+            text: "Next",
+            onPressed: () {},
+          )
+        ],
+      ),
+    );
   }
 }
