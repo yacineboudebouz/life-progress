@@ -14,3 +14,9 @@ Flutter app built with riverpod for the state management.
 ![Age](/screenshots/pic_3.png)
 ![Life](/screenshots/pic_4.png)
 ![Week](/screenshots/pic_5.png)
+
+# Source code
+- Feel free to take this code, modify and post.
+
+# Thanks
+- [Bartozo](https://github.com/Bartozo) for inspiring me to create this.
