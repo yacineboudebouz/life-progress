@@ -14,8 +14,13 @@ enum AppRoutes { welcome, birthDay, lifeExpectancy, home }
 @riverpod
 GoRouter goRouter(GoRouterRef ref) {
   final appFlowState = ValueNotifier(RouteStates.unknown);
+
   ref
     ..onDispose(appFlowState.dispose)
+
+    /// here whenever the value of teh flow changed
+    /// we change the local var [appFlowState] to redirect
+    /// the user based on that change
     ..listen(appFlowStateProvider, (_, value) {
       appFlowState.value = value;
     });
@@ -23,6 +28,10 @@ GoRouter goRouter(GoRouterRef ref) {
       debugLogDiagnostics: true,
       initialLocation: '/',
       refreshListenable: appFlowState,
+
+      /// here to redirect to home page when the user completes the
+      /// welcome steps anad this logic is valid also when using any
+      /// kind of this routing, onBoarding, authentification ..etc
       redirect: (_, state) {
         final appFlowstate = ref.watch(appFlowStateProvider);
         if (!appFlowstate.allowedPaths.contains(state.fullPath)) {
@@ -58,6 +67,7 @@ GoRouter goRouter(GoRouterRef ref) {
           name: AppRoutes.home.name,
         ),
       ]);
+  // always dispose providers
   ref.onDispose(router.dispose);
   return router;
 }

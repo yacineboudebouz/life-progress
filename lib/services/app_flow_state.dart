@@ -23,6 +23,8 @@ class AppFlowState extends _$AppFlowState {
     await storageService.setBirthDay(birthDay);
     await storageService.setAge(expectedAge);
     await storageService.setCompleteWelcome(true);
+
+    /// invalidate this provider to get the new value of the complete state.
     ref.invalidateSelf();
   }
 }
