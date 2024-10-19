@@ -21,7 +21,7 @@ class StorageService {
   StorageService(this._prefs);
 
   int getAge() {
-    return _prefs.getInt(StorageKeys.age.name) ?? 0;
+    return _prefs.getInt(StorageKeys.age.name) ?? 18;
   }
 
   int getLifeExpectation() {

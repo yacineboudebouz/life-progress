@@ -16,7 +16,7 @@ class SelectBirthDay extends ConsumerStatefulWidget {
 }
 
 class _SelectBirthDayState extends ConsumerState<SelectBirthDay> {
-  void _SelectDate() {
+  void _selectDate() {
     showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -55,7 +55,7 @@ class _SelectBirthDayState extends ConsumerState<SelectBirthDay> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: ListTile(
-              onTap: _SelectDate,
+              onTap: _selectDate,
               leading: const Icon(Icons.calendar_today_outlined),
               title: const Text(
                 "Your Birthday",

@@ -1,33 +1,8 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:life_progress/controllers/flow_state.dart';
 import 'package:life_progress/services/app_flow_state.dart';
 import 'package:life_progress/services/storage_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'flow_controller.g.dart';
-// final flowControllerProvider =
-//     StateNotifierProvider<FlowController, FlowState>((ref) {
-//   return FlowController(
-//       appFlowState: ref.watch(appFlowStateProvider.notifier),
-//       storageService: ref.watch(storageServiceProvider));
-// });
-
-// class FlowController extends StateNotifier<FlowState> {
-//   FlowController({required this.appFlowState, required this.storageService})
-//       : super(FlowState.initial()) {
-//     loadController();
-//   }
-
-//   final AppFlowState appFlowState;
-//   final StorageService storageService;
-
-//   void loadController() {
-//     state = state.copyWith(
-//       birthDay: storageService.getBirthDay(),
-//       expectedAge: storageService.getAge(),
-//     );
-//   }
-
-// }
 
 @Riverpod(keepAlive: true)
 class FlowController extends _$FlowController {
