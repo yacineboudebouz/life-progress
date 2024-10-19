@@ -7,10 +7,12 @@ import 'package:life_progress/ui/welcome/select_life_expectancy.dart';
 import 'package:life_progress/ui/welcome/welcome_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:go_router/go_router.dart';
+part 'go_router.g.dart';
 
 enum AppRoutes { welcome, birthDay, lifeExpectancy, home }
 
-final goRouterProvider = Provider<GoRouter>((ref) {
+@riverpod
+GoRouter goRouter(GoRouterRef ref) {
   final appFlowState = ValueNotifier(RouteStates.unknown);
   ref
     ..onDispose(appFlowState.dispose)
@@ -29,6 +31,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         return null;
       },
       routes: [
+        GoRoute(
+          path: '/',
+          pageBuilder: (_, __) => const MaterialPage(child: Scaffold()),
+        ),
         GoRoute(
           path: '/welcome',
           pageBuilder: (context, state) =>
@@ -54,4 +60,4 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       ]);
   ref.onDispose(router.dispose);
   return router;
-});
+}

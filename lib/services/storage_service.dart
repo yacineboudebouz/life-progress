@@ -1,12 +1,19 @@
 import 'package:life_progress/providers/shared_preferences_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+part 'storage_service.g.dart';
 
 enum StorageKeys { age, lifeExpectation, birthDay, theme, completeWelcome }
 
-final storageServiceProvider = Provider<StorageService>((ref) {
-  return StorageService(ref.watch(sharedPreferencesProvider).requireValue);
-});
+// final storageServiceProvider = Provider<StorageService>((ref) {
+//   return StorageService(ref.watch(sharedPreferencesProvider).requireValue);
+// });
+
+@Riverpod(keepAlive: true)
+StorageService storageService(StorageServiceRef ref) {
+  final prefs = ref.watch(sharedPreferencesProvider).requireValue;
+  return StorageService(prefs);
+}
 
 class StorageService {
   final SharedPreferences _prefs;
