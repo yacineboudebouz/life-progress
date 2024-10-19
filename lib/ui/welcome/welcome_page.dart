@@ -11,12 +11,13 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = AppColors.of(context);
     return AppScaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text.rich(
+          Text.rich(
             TextSpan(
               text: 'Welcome to\n',
               style: TextStyle(fontSize: 30),
@@ -26,7 +27,7 @@ class WelcomePage extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.primary),
+                      color: appColors.textSecondary),
                 ),
               ],
             ),

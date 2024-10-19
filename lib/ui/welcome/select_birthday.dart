@@ -36,14 +36,15 @@ class _SelectBirthDayState extends ConsumerState<SelectBirthDay> {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = AppColors.of(context);
     final state = ref.watch(flowControllerProvider);
     return AppScaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text(
+          Text(
             "Select your birthday",
-            style: TextStyle(fontSize: 32, color: AppColors.primary),
+            style: TextStyle(fontSize: 32, color: appColors.secondary),
             textAlign: TextAlign.center,
           ),
           const Text(

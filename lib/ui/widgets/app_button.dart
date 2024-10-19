@@ -16,6 +16,7 @@ class _AppButtonState extends State<AppButton> {
   bool _hovered = false;
   @override
   Widget build(BuildContext context) {
+    final appColors = AppColors.of(context);
     return GestureDetector(
       onTapDown: (_) {
         setState(() {
@@ -38,15 +39,15 @@ class _AppButtonState extends State<AppButton> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              backgroundColor: AppColors.primary,
+              backgroundColor: appColors.primary,
               padding: const EdgeInsets.symmetric(vertical: 15),
               minimumSize: const Size(double.infinity, 50),
             ),
             child: Text(
               widget.text,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 18,
-                color: AppColors.white,
+                color: appColors.textSecondary,
                 fontWeight: FontWeight.bold,
               ),
             ),

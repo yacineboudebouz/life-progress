@@ -20,12 +20,13 @@ class _SelectLifeExpectancyState extends ConsumerState<SelectLifeExpectancy> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(flowControllerProvider);
+    final appColors = AppColors.of(context);
     return AppScaffold(
       body: Column(
         children: [
-          const Text(
+          Text(
             "Select your Life Expectancy",
-            style: TextStyle(fontSize: 32, color: AppColors.primary),
+            style: TextStyle(fontSize: 32, color: appColors.textSecondary),
             textAlign: TextAlign.center,
           ),
           const Text(
@@ -50,7 +51,7 @@ class _SelectLifeExpectancyState extends ConsumerState<SelectLifeExpectancy> {
                 },
                 min: 18,
                 max: 150,
-                thumbColor: AppColors.primary,
+                thumbColor: appColors.secondary,
               ),
               trailing: Text(
                 '${state.expectedAge}',

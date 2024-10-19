@@ -2,7 +2,7 @@ import 'package:life_progress/providers/shared_preferences_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum StorageKeys { age, lifeExpectation, birthDay }
+enum StorageKeys { age, lifeExpectation, birthDay, theme }
 
 final storageServiceProvider = Provider<StorageService>((ref) {
   return StorageService(ref.watch(sharedPreferencesProvider).requireValue);
@@ -27,6 +27,14 @@ class StorageService {
     return DateTime.parse(birthDay);
   }
 
+  bool getTheme() {
+    return _prefs.getBool(StorageKeys.theme.name) ?? false;
+  }
+
+  Future<void> setTheme(bool isDark) async {
+    await _prefs.setBool(StorageKeys.theme.name, isDark);
+  }
+
   Future<void> setAge(int age) async {
     await _prefs.setInt(StorageKeys.age.name, age);
   }
@@ -36,6 +44,6 @@ class StorageService {
   }
 
   Future<void> setBirthDay(DateTime birthDay) async {
-    await _prefs.setString(StorageKeys.birthDay.name, birthDay.toString());
+    _prefs.setString(StorageKeys.birthDay.name, birthDay.toString());
   }
 }
