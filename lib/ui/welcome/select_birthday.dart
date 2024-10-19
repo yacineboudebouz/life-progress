@@ -77,3 +77,11 @@ class _SelectBirthDayState extends ConsumerState<SelectBirthDay> {
     );
   }
 }
+
+// void main() {
+//   var A;
+//   var B;
+//   var X;
+//   // read from the user 
+//   A = 
+// }

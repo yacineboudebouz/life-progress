@@ -1,20 +1,40 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:life_progress/controllers/flow_state.dart';
+import 'package:life_progress/services/app_flow_state.dart';
+import 'package:life_progress/services/storage_service.dart';
 
 final flowControllerProvider =
     StateNotifierProvider<FlowController, FlowState>((ref) {
-  return FlowController();
+  return FlowController(
+      appFlowState: ref.watch(appFlowStateProvider.notifier),
+      storageService: ref.watch(storageServiceProvider));
 });
 
 class FlowController extends StateNotifier<FlowState> {
-  FlowController() : super(FlowState.initial());
+  FlowController({required this.appFlowState, required this.storageService})
+      : super(FlowState.initial()) {
+    loadController();
+  }
 
+  final AppFlowState appFlowState;
+  final StorageService storageService;
   void setBirthday(DateTime birthday) {
     state = state.copyWith(birthDay: birthday);
   }
 
   void setAge(int expectedAge) {
     state = state.copyWith(expectedAge: expectedAge);
+  }
+
+  void completeWelcome() {
+    appFlowState.completeWelcome(state.birthDay, state.expectedAge);
+  }
+
+  void loadController() {
+    state = state.copyWith(
+      birthDay: storageService.getBirthDay(),
+      expectedAge: storageService.getAge(),
+    );
   }
 
   int get weeksInLife => state.expectedAge * 52;

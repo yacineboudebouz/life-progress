@@ -1,7 +1,7 @@
 enum RouteStates {
   // setup routes
   setup(
-    redirectPath: '/first-step',
+    redirectPath: '/welcome',
     allowedPaths: [
       'welcome',
       '/birth-day',
@@ -9,7 +9,8 @@ enum RouteStates {
     ],
   ),
   // application routes
-  home(redirectPath: '/home', allowedPaths: ['/home']);
+  home(redirectPath: '/home', allowedPaths: ['/home']),
+  unknown(redirectPath: '/', allowedPaths: ['/']);
 
   const RouteStates({
     required this.redirectPath,
