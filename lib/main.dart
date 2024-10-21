@@ -5,9 +5,13 @@ import 'package:life_progress/providers/shared_preferences_provider.dart';
 import 'package:life_progress/routes/go_router.dart';
 import 'package:life_progress/ui/theming/app_colors.dart';
 import 'package:life_progress/ui/theming/theme_controller.dart';
+import 'package:life_progress/utils/observor.dart';
 
 void main() {
-  runApp(const ProviderScope(child: LifeProgress()));
+  runApp(ProviderScope(
+    observers: [MyObserver()],
+    child: const LifeProgress(),
+  ));
 }
 
 class LifeProgress extends StatelessWidget {
