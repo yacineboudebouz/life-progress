@@ -11,8 +11,9 @@ class ThemeController extends _$ThemeController {
     final storageService = ref.watch(storageServiceProvider);
     return ThemeState(
       isDark: storageService.getTheme(),
-      themeData:
-          storageService.getTheme() ? ThemeData.dark() : ThemeData.light(),
+      themeData: storageService.getTheme()
+          ? ThemeData.dark(useMaterial3: true)
+          : ThemeData.light(useMaterial3: true),
     );
   }
 

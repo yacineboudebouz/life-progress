@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:life_progress/routes/routes_state.dart';
 import 'package:life_progress/services/app_flow_state.dart';
 import 'package:life_progress/ui/home/home_page.dart';
+import 'package:life_progress/ui/home_wrapper/home_wrapper.dart';
 import 'package:life_progress/ui/welcome/select_birthday.dart';
 import 'package:life_progress/ui/welcome/select_life_expectancy.dart';
 import 'package:life_progress/ui/welcome/welcome_page.dart';
@@ -24,6 +25,7 @@ GoRouter goRouter(GoRouterRef ref) {
     ..listen(appFlowStateProvider, (_, value) {
       appFlowState.value = value;
     });
+
   final router = GoRouter(
       debugLogDiagnostics: true,
       initialLocation: '/',
@@ -63,7 +65,7 @@ GoRouter goRouter(GoRouterRef ref) {
         GoRoute(
           path: '/home',
           pageBuilder: (context, state) =>
-              const MaterialPage(child: HomePage()),
+              const MaterialPage(child: HomeWrapper()),
           name: AppRoutes.home.name,
         ),
       ]);
