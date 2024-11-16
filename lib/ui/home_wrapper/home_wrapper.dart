@@ -12,13 +12,20 @@ class HomeWrapper extends StatefulWidget {
 class _HomeWrapperState extends State<HomeWrapper>
     with TickerProviderStateMixin {
   late AnimationController _controller;
+  late Animation<double> _animation;
 
   @override
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 800),
     );
+
+    _animation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.fastLinearToSlowEaseIn,
+    );
+
     super.initState();
   }
 
@@ -42,7 +49,7 @@ class _HomeWrapperState extends State<HomeWrapper>
     final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       body: AnimatedBuilder(
-        animation: _controller,
+        animation: _animation,
         builder: (context, child) {
           final value = _controller.value;
           final translationX = value * width / 2.5;
@@ -61,9 +68,7 @@ class _HomeWrapperState extends State<HomeWrapper>
                     Matrix4.translationValues(translationX, translationY, 0.0)
                       ..scale(scale)
                       ..rotateZ(rotation),
-                child: HomePage(
-                  onPressed: _toggleNavBar,
-                ),
+                child: HomePage(),
               ),
             ],
           );

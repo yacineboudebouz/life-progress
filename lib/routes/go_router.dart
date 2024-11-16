@@ -65,7 +65,7 @@ GoRouter goRouter(GoRouterRef ref) {
         GoRoute(
           path: '/home',
           pageBuilder: (context, state) =>
-              const MaterialPage(child: HomeWrapper()),
+              const MaterialPage(child: HomePage()),
           name: AppRoutes.home.name,
         ),
       ]);

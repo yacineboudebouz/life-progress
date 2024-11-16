@@ -29,7 +29,7 @@ class _EagerInitialization extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final values = [
+    final values = <AsyncValue>[
       ref.watch(sharedPreferencesProvider),
     ];
 

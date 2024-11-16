@@ -17,10 +17,14 @@ class FlowController extends _$FlowController {
 
   void setBirthday(DateTime birthday) {
     state = state.copyWith(birthDay: birthday);
+    final storage = ref.read(storageServiceProvider);
+    storage.setBirthDay(birthday);
   }
 
   void setAge(int expectedAge) {
     state = state.copyWith(expectedAge: expectedAge);
+    final storage = ref.read(storageServiceProvider);
+    storage.setAge(expectedAge);
   }
 
   void completeWelcome() {

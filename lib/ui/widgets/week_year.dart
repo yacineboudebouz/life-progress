@@ -5,13 +5,15 @@ class WeekYear extends StatelessWidget {
   final Color? color;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 20,
+    return RepaintBoundary(
+        child: SizedBox(
       width: 20,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(2),
-        color: color ?? Colors.grey,
+      height: 20,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: color ?? Colors.grey,
+        ),
       ),
-    );
+    ));
   }
 }
